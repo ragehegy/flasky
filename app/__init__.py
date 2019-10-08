@@ -19,5 +19,49 @@ def create_app(config_name):
     moment.init_app(app)
     db.init_app(app)
     # attach routes and custom error pages here
+    
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
+    @app.route('/quick-form', methods=['GET', 'POST'])
+    def quick_form():
+        form = NameForm()
+        if form.validate_on_submit():
+            old_name = session.get('name')                   
+            if old_name is not None and old_name != form.name.data: 
+                flash('Looks like you have changed your name!')
+            session['name'] = form.name.data
+            form.name.data = ''
+            return redirect(url_for('quick_form'))
+        return render_template('quick-form.html', form=form, name=session.get('name'))
+
+    @app.route('/login', methods=['GET', 'POST'])
+    def login_form():
+        loginform = LoginForm()
+        if loginform.validate_on_submit():
+            user = User.query.filter_by(username=loginform.username.data, password=loginform.password.data).first()
+            if user is None:
+                return '<h3>Invalid Username or Password</h3>'
+            else:
+                session['known'] = True
+            session['username'] = loginform.username.data
+            loginform.username.data = ''
+            return redirect(url_for('login_form'))
+        return render_template('login-form.html', loginform = loginform, username = session.get('username'), known = session.get('known', False))
+
+    Form = FlaskForm
+    login_form = FlaskForm
+
+    class NameForm(Form):
+        name = StringField('Your name', validators=[DataRequired()])
+
+    class LoginForm(Form):
+        username = StringField('Username', validators=[DataRequired()])
+        password = PasswordField('Password', validators=[DataRequired()])
+        submit = SubmitField()
+
+    from main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+    
     return app
