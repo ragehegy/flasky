@@ -1,0 +1,13 @@
+{% extends "common.html" %}
+
+{% block title %}
+    {{super()}} Login
+{% endblock title %}
+
+{% block page_content %} 
+
+    <div class="page-header">    
+        <h1>Hello, {% if username %}{{ username }}{% endif %}, You're Successfully Logged in!</h1> 
+    </div> 
+
+{%endblock page_content%}

@@ -1,0 +1,16 @@
+{% extends "common.html" %}
+
+{% block title %}
+    {{super()}} Login
+{% endblock title %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block page_content %} 
+
+    <div class="page-header">    
+        <h1>Hello, {% if username %}{{ username }}{% else %}Stranger{% endif %}!</h1> 
+    </div> 
+    {{ wtf.quick_form(loginform) }}
+
+{%endblock page_content%}
