@@ -53,14 +53,6 @@ def create_app(config_name):
     Form = FlaskForm
     login_form = FlaskForm
 
-    class NameForm(Form):
-        name = StringField('Your name', validators=[DataRequired()])
-
-    class LoginForm(Form):
-        username = StringField('Username', validators=[DataRequired()])
-        password = PasswordField('Password', validators=[DataRequired()])
-        submit = SubmitField()
-
     from main import main as main_blueprint
     app.register_blueprint(main_blueprint)
     
