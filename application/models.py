@@ -1,3 +1,5 @@
+from . import db
+from flask import current_app, request, url_for
 
 class Role(db.Model):
     __tablename__ = 'roles'
