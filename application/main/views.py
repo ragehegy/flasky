@@ -32,5 +32,5 @@ def login_form():
             session['known'] = True
         session['username'] = loginform.username.data
         loginform.username.data = ''
-        return redirect(url_for('login_form'))
+        return redirect(url_for('main.login_form'))
     return render_template('login-form.html', loginform = loginform, username = session.get('username'), known = session.get('known', False))

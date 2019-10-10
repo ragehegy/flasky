@@ -8,7 +8,7 @@ class Role(db.Model):
     users = db.relationship('User', backref='role')
 
     def __repr__(self):
-        return '<Role %r>' % self.name
+        return '<Role %r>' % self.roleName
 
 class User(db.Model):
     __tablename__ = 'users'
