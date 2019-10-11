@@ -11,6 +11,12 @@
     <div class="page-header">    
         <h1>Hello, {% if username %}{{ username }}{% else %}Stranger{% endif %}!</h1> 
     </div> 
-    {{ wtf.quick_form(loginform) }}
+    <div class="form-signin">
+        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        {{ wtf.quick_form(loginform) }}
+        <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+    </div>
+    
 
 {%endblock page_content%}

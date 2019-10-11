@@ -21,16 +21,17 @@ def quick_form():
         return redirect(url_for('quick_form'))
     return render_template('quick-form.html', form=form, name=session.get('name'))
 
-@main.route('/login', methods=['GET', 'POST'])
-def login_form():
-    loginform = LoginForm()
-    if loginform.validate_on_submit():
-        user = User.query.filter_by(username=loginform.username.data, password=loginform.password.data).first()
-        if user is None:
-            return '<h3>Invalid Username or Password</h3>'
-        else:
-            session['known'] = True
-        session['username'] = loginform.username.data
-        loginform.username.data = ''
-        return redirect(url_for('main.login_form'))
-    return render_template('login-form.html', loginform = loginform, username = session.get('username'), known = session.get('known', False))
+# @main.route('/login', methods=['GET', 'POST'])
+# def login_form():
+#     loginform = LoginForm()
+#     if loginform.validate_on_submit():
+#         user = User.query.filter_by(username=loginform.username.data, password=loginform.password.data).first()
+#         if user is None:
+#             flash('Invalid Username or Password!', category='error')
+#             # return '<h3>Invalid Username or Password</h3>'
+#         else:
+#             session['known'] = True
+#         session['username'] = loginform.username.data
+#         loginform.username.data = ''
+#         return redirect(url_for('main.login_form'))
+#     return render_template('login-form.html', loginform = loginform, username = session.get('username'), known = session.get('known', False))
