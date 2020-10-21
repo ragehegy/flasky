@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} {{super()}} Users {% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for table in users %}
+            {{ table|safe }}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} {{super()}} Home {% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>
+        Hello, {{ current_user.first_name }}!
+    </h1>
+    <h3>Welcome to our MiniBlog!</h3>
+    <p>
+        Before you can access this site you need to confirm your account.
+        Check your inbox, you should have received an email with a confirmation link.
+    </p>
+</div>
+{% endblock %}

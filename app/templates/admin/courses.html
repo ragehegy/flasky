@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} {{super()}} Courses {% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for table in courses %}
+            {{ table|safe }}
+        {% endfor %}
+    </div>
+{% endblock %}
