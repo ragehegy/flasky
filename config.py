@@ -23,7 +23,7 @@ class Config:
     FLASKY_FOLLOWERS_PER_PAGE = 50
     FLASKY_COMMENTS_PER_PAGE = 30
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
-    ENGINE = create_engine('mysql://root:@localhost/academic', convert_unicode=True, echo=False)
+    ENGINE = create_engine('mysql://o6gscqfi0dt6:2~K5NTl%@160.153.133.177/academic', convert_unicode=True, echo=False)
     @staticmethod
     def init_app(app):
         pass
@@ -31,16 +31,19 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    # SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    SQLALCHEMY_DATABASE_URI = 'mysql://o6gscqfi0dt6:2~K5NTl%@160.153.133.177/academic'
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    # SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    SQLALCHEMY_DATABASE_URI = 'mysql://o6gscqfi0dt6:2~K5NTl%@160.153.133.177/academic'
     WTF_CSRF_ENABLED = False
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    # SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/academic'
+    SQLALCHEMY_DATABASE_URI = 'mysql://o6gscqfi0dt6:2~K5NTl%@160.153.133.177/academic'
 
     @classmethod
     def init_app(cls, app):

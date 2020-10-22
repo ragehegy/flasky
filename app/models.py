@@ -9,7 +9,7 @@ from . import login_manager
 from . import db
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
-engine = create_engine('mysql://root:@localhost/academic', convert_unicode=True, echo=False)
+engine = create_engine('mysql://o6gscqfi0dt6:2~K5NTl%@160.153.133.177/academic', convert_unicode=True, echo=False)
 Base = declarative_base()
 Base.metadata.reflect(engine)
 
@@ -45,7 +45,9 @@ class User(UserMixin, Base):
         if data.get('confirm') != self.id:
             return False
         self.status = "active"
+        self.confirmed = 1
         db.session.add(self)
+        db.session.commit()
         return True
         
 class Teacher(Base):
